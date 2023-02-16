@@ -1,0 +1,47 @@
+{% extends 'main/layout.html'%}
+
+{%block title%}Регистрация на сайте{%endblock%}
+
+{%block content%}
+    <div class="features">
+        <h1> Регистрация на сайте</h1>
+        {% if news%}
+        {% for el in news%}
+        <div class="alert alert-warning">
+            <h3>{{ el.title }}</h3>
+            <p>{{ el.anons }}</p>
+            <a href="{% url 'register.html' el.id %}" class="btn btn-warning">Зарегистрироваться</a>
+        </div>
+        {%endfor%}
+        {%else%}
+        <p>Все еще не зарегестрировались?!</p>
+        {%endif%}
+    </div>
+
+
+<form method="POST" action="">
+    {%csrf_token%}
+
+    </br>{{form.first_name.label}}
+    {{form.first_name}}
+
+    </br>{{form.last_name.label}}
+    {{form.last_name}}
+
+    </br>{{form.username.label}}
+    {{form.username}}
+
+    </br>{{form.email.label}}
+    {{form.email}}
+
+    </br>{{form.password1.label}}
+    {{form.password1}}
+
+    </br>{{form.password2.label}}
+    {{form.password2}}
+
+
+    <input type="submit" name="Create user">
+
+</form>
+{% endblock %}
